@@ -13,9 +13,8 @@ namespace Sandy.Models
             Id = System.Guid.NewGuid().ToString();
             Type = LogType.Error.ToString();
             Req = new RequestInfo();
+            Error = new Error();
         }
-        public string Msg { get; set; }
-        public string Stack { get; set; }
-        public string Code { get; set; }
+        public Error Error { get; set; }
     }
 }

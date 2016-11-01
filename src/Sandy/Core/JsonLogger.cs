@@ -32,128 +32,45 @@ namespace Sandy.Core
             this.Options.DebugFilePath = options.DebugFilePath ?? this.Options.DebugFilePath;
             this.Options.WarningFilePath = options.WarningFilePath ?? this.Options.WarningFilePath;
             this.Options.FatalFilePath = options.FatalFilePath ?? this.Options.FatalFilePath;
+            Constants.SetOptions(this.Options);
         }
 
         public void LogInfo(Microsoft.AspNetCore.Http.HttpRequest request, string message = "")
         {
-            try
-            {
-                var log = GetRequestLog(request, message, LogLevel.Info);
-                FileWriter<RequestLog>.Log(log, Options.InfoFilePath);
-            }
-            catch { throw; }
-
+            Logger.LogInfo(request, message);
         }
 
         public void LogError(Microsoft.AspNetCore.Http.HttpRequest request, Exception exception,
             string errorMessage = "")
         {
-            try
-            {
-                var log = GetErrorLog(request, LogLevel.Error, exception, errorMessage);
-                FileWriter<ErrorLog>.Log(log, Options.ErrorFilePath);
-            }
-            catch { throw; }
+            Logger.LogError(request, exception, errorMessage);
         }
 
         public void LogError(Microsoft.AspNetCore.Http.HttpRequest request,
             string errorMessage = "")
         {
-            try
-            {
-                var log = GetErrorLog(request, LogLevel.Error, errorMessage);
-                FileWriter<ErrorLog>.Log(log, Options.ErrorFilePath);
-            }
-            catch { throw; }
+            Logger.LogError(request, errorMessage);
         }
 
         public void LogDebug(Microsoft.AspNetCore.Http.HttpRequest request, string message = "")
         {
-            try
-            {
-                var log = GetRequestLog(request, message, LogLevel.Debug);
-                FileWriter<RequestLog>.Log(log, Options.DebugFilePath);
-            }
-            catch { throw; }
+            Logger.LogDebug(request, message);
         }
 
         public void LogWarning(Microsoft.AspNetCore.Http.HttpRequest request, string message = "")
         {
-            try
-            {
-                var log = GetRequestLog(request, message, LogLevel.Warning);
-                FileWriter<RequestLog>.Log(log, Options.WarningFilePath);
-            }
-            catch { throw; }
+            Logger.LogWarning(request, message);
         }
 
         public void LogFatal(Microsoft.AspNetCore.Http.HttpRequest request, Exception exception,
            string errorMessage = "")
         {
-            try
-            {
-                var log = GetErrorLog(request, LogLevel.Fatal, exception, errorMessage);
-                FileWriter<ErrorLog>.Log(log, Options.FatalFilePath);
-            }
-            catch { throw; }
+            Logger.LogFatal(request, exception, errorMessage);
         }
 
         public void LogFatal(Microsoft.AspNetCore.Http.HttpRequest request, string errorMessage = "")
         {
-            try
-            {
-                var log = GetErrorLog(request, LogLevel.Fatal, errorMessage);
-                FileWriter<ErrorLog>.Log(log, Options.FatalFilePath);
-            }
-            catch { throw; }
+            Logger.LogFatal(request, errorMessage);
         }
-
-        #region Helpers
-
-        private RequestLog GetRequestLog(Microsoft.AspNetCore.Http.HttpRequest request, string message,
-            LogLevel level)
-        {
-            RequestLog log = new RequestLog();
-            log.Req = request.Extract();
-            log.HostName = request.Host.Host;
-            log.Name = Options.AppName;
-            log.Message = message;
-            log.LevelId = (int)level;
-            return log;
-        }
-
-        private ErrorLog GetErrorLog(Microsoft.AspNetCore.Http.HttpRequest request, LogLevel level,
-            Exception exception, string message)
-        {
-            var log = new ErrorLog();
-            log.Req = request.Extract();
-            log.HostName = request.Host.Host;
-            log.Name = Options.AppName;
-            log.Message = message ?? exception.Message;
-            log.LevelId = (int)level;
-            log.Stack = exception.InnerException?.StackTrace;
-            log.Msg = exception.InnerException?.Message;
-            log.Code = "Error";
-
-            return log;
-        }
-
-        private ErrorLog GetErrorLog(Microsoft.AspNetCore.Http.HttpRequest request, LogLevel level,
-            string message)
-        {
-            var log = new ErrorLog();
-            log.Req = request.Extract();
-            log.HostName = request.Host.Host;
-            log.Name = Options.AppName;
-            log.Message = message;
-            log.LevelId = (int)level;
-            log.Stack = "";
-            log.Msg = message;
-            log.Code = "Error";
-
-            return log;
-        }
-
-        #endregion
     }
 }

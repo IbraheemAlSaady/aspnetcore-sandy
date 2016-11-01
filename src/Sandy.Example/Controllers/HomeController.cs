@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sandy.Core;
+using Sandy.Extensions;
 
 namespace Sandy.Example.Controllers
 {
@@ -26,8 +27,11 @@ namespace Sandy.Example.Controllers
         {
             ViewData["Message"] = "Your application description page.";
 
-            requestLogger.LogInfo(this.Request, "logged in");
-            requestLogger.LogDebug(this.Request, "");
+            Request.LogInfo();
+            Request.LogError("something went wrong");
+
+            //requestLogger.LogInfo(this.Request, "logged in");
+            //requestLogger.LogDebug(this.Request, "");
             requestLogger.LogFatal(Request, new Exception("something went wrong"), "my message");
 
             return View();

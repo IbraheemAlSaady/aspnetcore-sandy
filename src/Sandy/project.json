@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "0.1.0-*",
   "authors": [ "Ibraheem Al Saady" ],
   "description": "Sandy is a json logger that can log your request as well as other information into files",
  
