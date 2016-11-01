@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0-*",
+  "authors": [ "Ibraheem Al Saady" ],
+  "description": "Sandy is a json logger that can log your request as well as other information into files",
+ 
+  "packOptions": {
+    "projectUrl": "https://github.com/IbraheemAlSaady/SandyLogger",
+    "tags": ["sandy", "logger", ".net core logger", "logfiles", "json logger", "logjson", "request logger", "log request"]
+  },
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "Newtonsoft.Json": "9.0.1",
+    "Microsoft.AspNetCore.Http": "1.0.0"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }
+}
