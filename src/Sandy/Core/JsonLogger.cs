@@ -22,6 +22,7 @@ namespace Sandy.Core
                 WarningFilePath = "C:/DefaultApp/Logs/DefaultApp-warning.log",
                 FatalFilePath = "C:/DefaultApp/Logs/DefaultApp-fatal.log",
             };
+            Constants.SetOptions(Options);
         }
 
         public void SetOptions(JsonLoggerOptions options)
