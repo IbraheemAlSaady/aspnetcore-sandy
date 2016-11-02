@@ -67,9 +67,19 @@ public IActionResult()
     Request.LogError("something went wrong");
 }
 ```
+
+### JSON Logger Options
+1. **AppName** (Default "DefaultApp")
+2. **InfoFilePath** (Default "C:/DefaultApp/Logs/DefaultApp-info.log").
+3. **ErrorFilePath** (Default "C:/DefaultApp/Logs/DefaultApp-error.log").
+4. **DebugFilePath** (Default "C:/DefaultApp/Logs/DefaultApp-debug.log").
+5. **WarningFilePath** (Default "C:/DefaultApp/Logs/DefaultApp-warning.log").
+6. **FatalFilePath** (Default "C:/DefaultApp/Logs/DefaultApp-fatal.log").
+
 ## IMPORANT NOTE
 Because .NET Core still at its early stage, granting permissions for the files inside the code still not supported.
 so you might want to do it manually for now.
 
-## Contact
+## More
+check my other logging repo [here](https://github.com/IbraheemAlSaady/aspnetcore-requesttimerlogger)
 Feel free to drop me an email at ibraheem.al-saady@outlook.com
