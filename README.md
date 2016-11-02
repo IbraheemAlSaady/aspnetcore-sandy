@@ -1,8 +1,6 @@
 # Sandy
 
 Sandy is a logger for .NET Core that will help you to log your request information in a json format into files. 
-The request information includes: Url path, Body, Headers, host, remote address, remote port, in addition to other attributes...
-
 
 ##Installation
 
@@ -23,7 +21,7 @@ public void ConfigureServices(IServiceCollection services)
    services.AddMvc();
 }
 ```
-Sandy comes with default options, however you can set these options
+Sandy comes with default options, however you can override these options
 
 ```C#
  public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
@@ -42,9 +40,9 @@ public void ConfigureJsonLogger(IJsonLogger jsonLogger)
 }
 ```
 
-You have two options to log
+You have to options in order for you to log
 
-1- Inject the IJsonLogger in the constructor.
+1- Injecting the IJsonLogger in the constructor and using the instance.
 
 ```C#
 private IJsonLogger logger { get; set; }
@@ -61,7 +59,7 @@ public IActionResult()
 }
 ```
 
-2- The HttpRequest has extensions for logging. 
+2- Using the HttpRequest extension methods. 
 ```C#
 public IActionResult()
 {
@@ -70,8 +68,8 @@ public IActionResult()
 }
 ```
 ## IMPORANT NOTE
-Because .NET Core still at the early stage, granting permissions for the files inside the code still not supported (as far as I know)
-so you might want to do it manually.
+Because .NET Core still at its early stage, granting permissions for the files inside the code still not supported.
+so you might want to do it manually for now.
 
 ## Contact
 Feel free to drop me an email at ibraheem.al-saady@outlook.com
