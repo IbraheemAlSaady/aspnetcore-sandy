@@ -35,7 +35,7 @@ public void ConfigureJsonLogger(IJsonLogger jsonLogger)
 {
     jsonLogger.SetOptions(new JsonLoggerOptions()
     {
-        AppName = "MyGreatApp", 
+        AppName = "MyAppName", 
     });
 }
 ```
