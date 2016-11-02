@@ -81,5 +81,6 @@ Because .NET Core still at its early stage, granting permissions for the files i
 so you might want to do it manually for now.
 
 ## More
-check my other logging repo [here](https://github.com/IbraheemAlSaady/aspnetcore-requesttimerlogger)
+check my other logging repo [here](https://github.com/IbraheemAlSaady/aspnetcore-requesttimerlogger).
+
 Feel free to drop me an email at ibraheem.al-saady@outlook.com
